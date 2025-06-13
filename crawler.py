@@ -2,8 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import re
 from db import insert_news
+from datetime import datetime
 # PTT 股票版爬蟲
 # 目標：抓取最新5頁中包含「川普」的文章，並寫入資料庫
+
+with open("log.txt", "a", encoding="utf-8") as f:
+    f.write(f"爬蟲執行時間：{datetime.now()}\n")
+    
 def get_latest_page():
     url = "https://www.ptt.cc/bbs/Stock/index.html"
     resp = requests.get(url)
