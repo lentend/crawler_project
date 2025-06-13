@@ -2,3 +2,5 @@ pyodbc
 python-dotenv
 requests
 beautifulsoup4
+selenium
+lxml
