@@ -35,6 +35,7 @@ def insert_news(date, title, url, content):
         )
         conn.commit()
         print(f"已寫入：{title} | {url}")
+        return True  #  表示成功寫入
     except Exception as e:
         # 捕捉 UNIQUE 約束違反（網址重複）時自動略過
         if "UNIQUE" in str(e) or "unique" in str(e):
