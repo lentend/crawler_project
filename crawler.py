@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 from db import insert_news
 from datetime import datetime
+from dc_notifier import send_to_discord
 # PTT 股票版爬蟲
 # 目標：抓取最新5頁中包含「川普」的文章，並寫入資料庫
 
@@ -42,4 +43,5 @@ else:
                     link = "https://www.ptt.cc" + title_tag["href"]
                     author = entry.select_one(".author").text.strip()
                     date = entry.select_one(".date").text.strip()
-                    insert_news(date, title, link, "")  # 這裡的 content 留空，因為 PTT 的文章內容需要進一步抓取
+                    if insert_news(date, title, link, ""):  # 這裡的 content 留空，因為 PTT 的文章內容需要進一步抓取
+                        send_to_discord(title, link)
