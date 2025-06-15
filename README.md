@@ -7,6 +7,11 @@
 - 發送至指定的 Discord 頻道
 - 每次執行會記錄執行時間（log.txt）
 
+## 執行結果示意
+
+Discord 通知畫面截圖：
+![Discord通知畫面](img/dc.png)
+
 ## 使用套件版本
 - pyodbc==5.2.0
 - python-dotenv==1.1.0
