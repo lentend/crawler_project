@@ -55,7 +55,7 @@ def process_page(page_num):
                     date = entry.select_one(".date").text.strip()
                     content = get_article_content(link)
                     if insert_news(date, title, link,content):
-                        send_to_discord(title, link)
+                        send_to_discord(title, link,content)
     except Exception as e:
         print(f"第 {page_num} 頁失敗：{e}")
 
