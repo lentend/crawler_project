@@ -56,7 +56,27 @@ def clear_news_table():
     conn.commit()
     print("news 資料表已清空且自動編號已重設")
 
+#更新
+def update_news_date(news_id, new_date):
+    cursor.execute("""
+    UPDATE news
+    SET date = ?
+    WHERE id = ?
+    """, (new_date, news_id))
+    conn.commit()
+    print(f"已更新 ID {news_id} 的日期為 {new_date}")
+
+# 手動更新日期
+def manual_update_date():
+    try:
+        news_id = int(input("請輸入要更新的新聞 ID："))
+        new_date = input("請輸入新的日期（例如 2025-06-20）：")
+        update_news_date(news_id, new_date)
+    except Exception as e:
+        print(f"更新失敗：{e}")
+
+
+
 # 測試寫入
 if __name__ == "__main__":
-    insert_news("06/11","測試標題", "https://example.com", "這是一筆測試資料")
-    print("資料寫入成功")
+    manual_update_date()
